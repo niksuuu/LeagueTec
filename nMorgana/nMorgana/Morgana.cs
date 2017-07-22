@@ -54,7 +54,7 @@ namespace nMorgana
 				ComboMenu.Add(new MenuBool("useq", "Use Q"));
 				ComboMenu.Add(new MenuBool("usew", "Use W"));
 				ComboMenu.Add(new MenuBool("user", "Use R"));
-				ComboMenu.Add(new MenuSlider("minr", "Min.Enemy For R", 1, 5));
+				ComboMenu.Add(new MenuSlider("minr", "Min.Enemy For R", 3,1, 5));
 			}
 			Menu.Add(ComboMenu);
 
@@ -62,7 +62,7 @@ namespace nMorgana
 			{
 				KSMenu.Add(new MenuBool("ksq", "KS With Q",false));
 				KSMenu.Add(new MenuBool("ksr", "KS With R", false));
-				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks",100,1000));
+				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks",150,100,1000));
 			}
 			Menu.Add(KSMenu);
 
