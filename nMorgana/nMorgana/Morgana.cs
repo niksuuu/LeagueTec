@@ -119,9 +119,9 @@ namespace nMorgana
 			{
 
 
-				var besttarget = ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsEnemy && x.IsInRange(W.Range) && x.HasBuffOfType(BuffType.Stun) && x.IsValidTarget(W.Range)).OrderBy(x => x.Distance(MyPlayer)).FirstOrDefault();
+				var besttarget = TargetSelector.GetTarget(W.Range);
 
-					if (besttarget != null)
+					if (besttarget.IsValidTarget(W.Range))
 					W.Cast(besttarget);
 
 			}
