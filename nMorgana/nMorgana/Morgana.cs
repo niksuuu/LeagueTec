@@ -105,8 +105,16 @@ namespace nMorgana
 			if (Menu["combo"]["useq"].Enabled && Q.Ready)
 			{
 				var besttarget = TargetSelector.GetTarget(Q.Range);
-
+				
 				if (besttarget.IsValidTarget(Q.Range))
+				{
+					var predi = Q.GetPrediction(besttarget);
+					if(predi.HitChance >= HitChance.High)
+					{
+						Q.Cast(besttarget);
+					}
+				}
+
 					Q.Cast(besttarget);
 
 			}
@@ -135,7 +143,11 @@ namespace nMorgana
 					{
 						return;
 					}
-					Q.Cast(ksc);
+					var predi = Q.GetPrediction(ksc);
+					if (predi.HitChance >= HitChance.High)
+					{
+						Q.Cast(ksc);
+					}
 					return;
 				}
 				
