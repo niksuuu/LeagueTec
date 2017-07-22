@@ -66,13 +66,8 @@ namespace nMorgana
 			}
 			Menu.Add(KSMenu);
 
-			var DrawMenu = new Menu("draw", "Drawings");
-			{
-				DrawMenu.Add(new MenuBool("drawq", "Draw Q Range"));
-				DrawMenu.Add(new MenuBool("drawq", "Draw W Range"));
-				DrawMenu.Add(new MenuBool("drawq", "Draw R Range"));
-			}
-			Menu.Add(DrawMenu);
+			
+			
 			Menu.Attach();
 
 			Game.OnUpdate += Game_OnUpdate;
@@ -169,18 +164,13 @@ namespace nMorgana
 
 		private void Render_OnPresent()
 		{
-			if (Menu["draw"]["drawq"].Enabled)
-			{
+			
 				Render.Circle(MyPlayer.Position, Q.Range, 30, Color.Purple);
-			}
-			if (Menu["draw"]["draww"].Enabled)
-			{
+			
 				Render.Circle(MyPlayer.Position, W.Range, 30, Color.Purple);
-			}
-			if (Menu["draw"]["drawr"].Enabled)
-			{
+			
 				Render.Circle(MyPlayer.Position, R.Range, 30, Color.Red);
-			}
+			
 		}
 		}
 		   }
