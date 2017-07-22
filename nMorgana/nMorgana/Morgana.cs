@@ -62,7 +62,7 @@ namespace nMorgana
 			{
 				KSMenu.Add(new MenuBool("ksq", "KS With Q",false));
 				KSMenu.Add(new MenuBool("ksr", "KS With R", false));
-				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks",100,(int)MyPlayer.MaxMana));
+				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks",100,1000));
 			}
 			Menu.Add(KSMenu);
 
