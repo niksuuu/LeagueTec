@@ -170,26 +170,26 @@ namespace nMorgana
 					SDataName = "AzirR",
 					DangerLevel = 5
 				});
-				CCList.Add(
-				new SpellLib
-				{
-					HeroName = "Bard",
-					SpellMenuName = "BardQ",
-					Slot = SpellSlot.Q,
-					Type = Skilltype.Line,
-					SDataName = "BardQ",
-					DangerLevel = 5
-				});
-				CCList.Add(
-				new SpellLib
-				{
-					HeroName = "Bard",
-					SpellMenuName = "BardR",
-					Slot = SpellSlot.Q,
-					Type = Skilltype.Line,
-					SDataName = "BardR",
-					DangerLevel = 5
-				});
+			CCList.Add(
+			new SpellLib
+			{
+				HeroName = "Bard",
+				SpellMenuName = "BardQ",
+				Slot = SpellSlot.Q,
+				Type = Skilltype.Line,
+				SDataName = "BardQ",
+				DangerLevel = 5
+			});
+			CCList.Add(
+			new SpellLib
+			{
+				HeroName = "Bard",
+				SpellMenuName = "BardR",
+				Slot = SpellSlot.Q,
+				Type = Skilltype.Line,
+				SDataName = "BardR",
+				DangerLevel = 5
+			});
 			CCList.Add(
 				new SpellLib
 				{
@@ -213,7 +213,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Brand",
-					SpellMenuName = "BrandQ,
+					SpellMenuName = "BrandQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					SDataName = "BrandQ",
@@ -1586,4 +1586,4 @@ new SpellLib
 		}
 	}
 }
-}
+

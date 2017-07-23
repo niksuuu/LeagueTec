@@ -75,7 +75,20 @@ namespace nMorgana
 			}
 			Menu.Add(EUseOn);
 
-			
+			var ESpells = new Menu("espells", "E Spells List");
+			{
+				foreach(var e in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy))
+				{
+					foreach(var s in SpellLib.CCList)
+					{
+						if(s.HeroName == e.ChampionName)
+						{
+							ESpells.Add(new MenuBool(s.SDataName, s.SpellMenuName,true));
+						}
+					}
+				}
+			}
+			Menu.Add(ESpells);
 			var KSMenu = new Menu("ks", "KillSteal");
 			{
 				KSMenu.Add(new MenuBool("ksq", "KS With Q",false));
@@ -113,9 +126,43 @@ namespace nMorgana
 					var target = ObjectManager.Get<Obj_AI_Hero>().Where(her => her.IsAlly).OrderBy(h => h.Distance(args.End));
 					foreach(var a in target)
 					{
-						if(a.Distance(args.End) <= 250f && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+						foreach (var spell in SpellLib.CCList)
 						{
-							E.CastOnUnit(a);
+							if(spell.SDataName == sender.SpellBook.GetSpell(args.Slot).SpellData.Name)
+							{
+								switch(spell.Type)
+								{
+									case Skilltype.Circle:
+										if(a.Distance(args.End) <= 250f && E.Ready)
+										{
+											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)					
+												E.CastOnUnit(a);
+											
+										}
+										break;
+
+									case Skilltype.Line:
+										if(a.Distance(args.End) <= 100f && E.Ready)
+										{
+											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+												E.CastOnUnit(a);
+										}
+										break;
+									case Skilltype.Unknown:
+										if(E.Ready && (a.Distance(args.End) <= 600f || a.Distance(sender.Position) <= 600f))
+											if(a.ChampionName != MyPlayer.ChampionName && a.Distance(MyPlayer.Position) < E.Range)
+											{
+												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+													E.CastOnUnit(a);
+											}
+										else
+											{
+												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+													E.CastOnUnit(a);
+											}
+										break;
+								}
+							}
 						}
 					}
 				}
