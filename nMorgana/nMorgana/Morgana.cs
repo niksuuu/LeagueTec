@@ -103,7 +103,7 @@ namespace nMorgana
 				if (sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
 				{
 
-					var target = ObjectManager.Get<Obj_AI_Hero>().Where(her => her.IsAlly).OrderBy(h => h.Distance(args.End));
+					var target = ObjectManager.Get<Obj_AI_Hero>().OrderBy(h => h.Distance(args.End));
 					foreach (var a in target)
 					{
 						if(a.Distance(args.End) <= 1000f && E.Ready)
