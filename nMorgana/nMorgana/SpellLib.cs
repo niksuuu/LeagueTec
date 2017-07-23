@@ -35,7 +35,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Aatrox",
-					SpellMenuName = "Dark Flight",
+					SpellMenuName = "AatroxQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
 					SDataName = "AatroxQ",
@@ -45,7 +45,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Aatrox",
-					SpellMenuName = "Blades of Torment",
+					SpellMenuName = "AatroxE",
 					Slot = SpellSlot.E,
 					Type = Skilltype.Cone,
 					SDataName = "AatroxE",
@@ -55,7 +55,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Ahri",
-					SpellMenuName = "Charm",
+					SpellMenuName = "AhriE",
 					Slot = SpellSlot.E,
 					Type = Skilltype.Line,
 					SDataName = "AhriSeduce",
@@ -65,7 +65,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Alistar",
-					SpellMenuName = "Pulverize",
+					SpellMenuName = "AlistarQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
 					SDataName = "Pulverize",
@@ -75,7 +75,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Alistar",
-					SpellMenuName = "Headbutt",
+					SpellMenuName = "AlistarW",
 					Slot = SpellSlot.W,
 					SDataName = "Headbutt",
 					DangerLevel = 3
@@ -84,7 +84,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Amumu",
-					SpellMenuName = "Bandage Toss",
+					SpellMenuName = "AmumuQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
 					SDataName = "BandageToss",
@@ -94,7 +94,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Amumu",
-					SpellMenuName = "Curse of the Sad Mummy",
+					SpellMenuName = "AmumuR",
 					Slot = SpellSlot.R,
 					Type = Skilltype.Circle,
 					SDataName = "CurseoftheSadMummy",
@@ -104,7 +104,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Anivia",
-					SpellMenuName = "Flash Frost",
+					SpellMenuName = "AniviaQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					SDataName = "FlashFrost",
@@ -114,8 +114,8 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Anivia",
-					SpellMenuName = "Glacial Storm",
-					Slot = SpellSlot.Q,
+					SpellMenuName = "AniviaR",
+					Slot = SpellSlot.R,
 					Type = Skilltype.Circle,
 					SDataName = "GlacialStorm",
 					DangerLevel = 3
@@ -124,7 +124,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Annie",
-					SpellMenuName = "Tibbers",
+					SpellMenuName = "AnnieR",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
 					SDataName = "InfernalGuardian",
@@ -134,8 +134,8 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Ashe",
-					SpellMenuName = "Crystal Arrow",
-					Slot = SpellSlot.W,
+					SpellMenuName = "AsheR",
+					Slot = SpellSlot.R,
 					Type = Skilltype.Line,
 					SDataName = "EnchantedCrystalArrow",
 					DangerLevel = 5
@@ -144,7 +144,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Ashe",
-					SpellMenuName = "Volley",
+					SpellMenuName = "AsheW",
 					Slot = SpellSlot.W,
 					Type = Skilltype.Cone,
 					SDataName = "Volley",
@@ -154,7 +154,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Azir",
-					SpellMenuName = "ShiftingSands",
+					SpellMenuName = "AzirE",
 					Slot = SpellSlot.E,
 					Type = Skilltype.Circle,
 					SDataName = "AzirE",
@@ -164,17 +164,37 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Azir",
-					SpellMenuName = "Emperor's Divide",
+					SpellMenuName = "AzirR",
 					Slot = SpellSlot.R,
 					Type = Skilltype.Circle,
 					SDataName = "AzirR",
+					DangerLevel = 5
+				});
+				CCList.Add(
+				new SpellLib
+				{
+					HeroName = "Bard",
+					SpellMenuName = "BardQ",
+					Slot = SpellSlot.Q,
+					Type = Skilltype.Line,
+					SDataName = "BardQ",
+					DangerLevel = 5
+				});
+				CCList.Add(
+				new SpellLib
+				{
+					HeroName = "Bard",
+					SpellMenuName = "BardR",
+					Slot = SpellSlot.Q,
+					Type = Skilltype.Line,
+					SDataName = "BardR",
 					DangerLevel = 5
 				});
 			CCList.Add(
 				new SpellLib
 				{
 					HeroName = "Blitzcrank",
-					SpellMenuName = "Rocket Grab",
+					SpellMenuName = "BlitzQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					SDataName = "RocketGrab",
@@ -184,7 +204,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Blitzcrank",
-					SpellMenuName = "Power Fist",
+					SpellMenuName = "BlitzE",
 					Slot = SpellSlot.E,
 					SDataName = "PowerFist",
 					DangerLevel = 3
@@ -196,7 +216,7 @@ namespace nMorgana
 					SpellMenuName = "Sear",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
-					SDataName = "BrandBlazeMissile",
+					SDataName = "BrandQ",
 					DangerLevel = 3
 				});
 			CCList.Add(
