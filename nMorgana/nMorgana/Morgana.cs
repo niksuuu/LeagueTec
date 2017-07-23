@@ -80,7 +80,7 @@ namespace nMorgana
 
 
 			Menu.Attach();
-
+			SpellBook.OnCastSpell += OnProcessSpellCast;
 			Game.OnUpdate += Game_OnUpdate;
 			Render.OnPresent += Render_OnPresent;
 
