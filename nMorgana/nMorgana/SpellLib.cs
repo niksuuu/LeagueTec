@@ -34,7 +34,7 @@ namespace nMorgana
 			CCList.Add(
 				new SpellLib
 				{
-					HeroName = "Aatorx",
+					HeroName = "Aatrox",
 					SpellMenuName = "Dark Flight",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
@@ -44,7 +44,7 @@ namespace nMorgana
 			CCList.Add(
 				new SpellLib
 				{
-					HeroName = "Aatorx",
+					HeroName = "Aatrox",
 					SpellMenuName = "Blades of Torment",
 					Slot = SpellSlot.E,
 					Type = Skilltype.Cone,
@@ -202,7 +202,7 @@ namespace nMorgana
 			CCList.Add(
 				new SpellLib
 				{
-					HeroName = "Bruam",
+					HeroName = "Braum",
 					SpellMenuName = "Winter's Bite",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
@@ -212,7 +212,7 @@ namespace nMorgana
 			CCList.Add(
 				new SpellLib
 				{
-					HeroName = "Bruam",
+					HeroName = "Braum",
 					SpellMenuName = "Glacial Fissure",
 					Slot = SpellSlot.R,
 					Type = Skilltype.Line,
@@ -336,7 +336,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Galio",
-					SpellMenuName = "Resolute Smite",
+					SpellMenuName = "Winds of War",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Circle,
 					DangerLevel = 2,
@@ -346,7 +346,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Galio",
-					SpellMenuName = "Idol Of Durand",
+					SpellMenuName = "Hero's Entrance",
 					Slot = SpellSlot.R,
 					Type = Skilltype.Circle,
 					DangerLevel = 5,
