@@ -108,7 +108,7 @@ namespace nMorgana
 					{
 						if(a.Distance(args.End) <= 1000f && E.Ready)
 						{
-							E.CastOnUnit(a);
+							E.CastOnUnit(MyPlayer);
 						}
 						
 					}
