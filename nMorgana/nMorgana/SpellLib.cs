@@ -1519,7 +1519,7 @@ new SpellLib
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					DangerLevel = 3,
-					SDataName = "AlZaharCalloftheVoid",
+					SDataName = "MalZaharCalloftheVoid",
 				});
 			SList.Add(
 				new SpellLib
