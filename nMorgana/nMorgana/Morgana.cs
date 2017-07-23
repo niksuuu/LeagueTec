@@ -62,7 +62,7 @@ namespace nMorgana
 
 			var EMainMenu = new Menu("emain", "E Main Menu");
 			{
-				EMainMenu.Add(new MenuBool("usee", "Use E"));
+				EMainMenu.Add(new MenuBool("usee", "Use E",true));
 				EMainMenu.Add(new MenuSlider("mine", "Min Mana For E", 350, 55, (int)MyPlayer.MaxMana));
 			}
 			Menu.Add(EMainMenu);
@@ -98,7 +98,7 @@ namespace nMorgana
 
 		private void OnProcessSpellCast(Obj_AI_Base sender, SpellBookCastSpellEventArgs args)
 		{
-			if (Menu["emenu"]["usee"].Enabled && MyPlayer.Mana >= Menu["emain"]["mine"].Value)
+			if (Menu["emenu"]["usee"].Enabled )
 			{
 				if (sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
 				{
