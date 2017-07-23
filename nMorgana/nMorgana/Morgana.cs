@@ -56,7 +56,7 @@ namespace nMorgana
 				ComboMenu.Add(new MenuBool("useq", "Use Q"));
 				ComboMenu.Add(new MenuBool("usew", "Use W"));
 				ComboMenu.Add(new MenuBool("user", "Use R"));
-				ComboMenu.Add(new MenuSlider("minr", "Min.Enemy For R", 3,1, 5));
+				ComboMenu.Add(new MenuSlider("minr", "Min.Enemy For R", 3, 1, 5));
 			}
 			Menu.Add(ComboMenu);
 
@@ -77,13 +77,13 @@ namespace nMorgana
 
 			var ESpells = new Menu("espells", "E Spells List");
 			{
-				foreach(var e in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy))
+				foreach (var e in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy))
 				{
-					foreach(var s in SpellLib.CCList)
+					foreach (var s in SpellLib.CCList)
 					{
-						if(s.HeroName == e.ChampionName)
+						if (s.HeroName == e.ChampionName)
 						{
-							ESpells.Add(new MenuBool(s.SDataName, s.SpellMenuName,true));
+							ESpells.Add(new MenuBool(s.SDataName, s.SpellMenuName, true));
 						}
 					}
 				}
@@ -91,22 +91,22 @@ namespace nMorgana
 			Menu.Add(ESpells);
 			var KSMenu = new Menu("ks", "KillSteal");
 			{
-				KSMenu.Add(new MenuBool("ksq", "KS With Q",false));
+				KSMenu.Add(new MenuBool("ksq", "KS With Q", false));
 				KSMenu.Add(new MenuBool("ksr", "KS With R", false));
-				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks",150,100,(int)MyPlayer.MaxMana));
+				KSMenu.Add(new MenuSlider("minmana", "Min. Mana For Ks", 150, 100, (int)MyPlayer.MaxMana));
 			}
 			Menu.Add(KSMenu);
 
-			
-			
+
+
 			Menu.Attach();
 
 			Game.OnUpdate += Game_OnUpdate;
 			Render.OnPresent += Render_OnPresent;
-			
+
 		}
 		private void Game_OnUpdate()
-		{	
+		{
 			if (MyPlayer.IsDead)
 				return;
 
@@ -120,42 +120,42 @@ namespace nMorgana
 		{
 			if (Menu["emenu"]["usee"].Enabled && MyPlayer.Mana >= Menu["emain"]["mine"].Value)
 			{
-				if(sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
+				if (sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
 				{
-					
+
 					var target = ObjectManager.Get<Obj_AI_Hero>().Where(her => her.IsAlly).OrderBy(h => h.Distance(args.End));
-					foreach(var a in target)
+					foreach (var a in target)
 					{
 						foreach (var spell in SpellLib.CCList)
 						{
-							if(spell.SDataName == sender.SpellBook.GetSpell(args.Slot).SpellData.Name)
+							if (spell.SDataName == sender.SpellBook.GetSpell(args.Slot).SpellData.Name)
 							{
-								switch(spell.Type)
+								switch (spell.Type)
 								{
 									case Skilltype.Circle:
-										if(a.Distance(args.End) <= 250f && E.Ready)
+										if (a.Distance(args.End) <= 250f && E.Ready)
 										{
-											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)					
+											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
 												E.CastOnUnit(a);
-											
+
 										}
 										break;
 
 									case Skilltype.Line:
-										if(a.Distance(args.End) <= 100f && E.Ready)
+										if (a.Distance(args.End) <= 100f && E.Ready)
 										{
 											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
 												E.CastOnUnit(a);
 										}
 										break;
 									case Skilltype.Unknown:
-										if(E.Ready && (a.Distance(args.End) <= 600f || a.Distance(sender.Position) <= 600f))
-											if(a.ChampionName != MyPlayer.ChampionName && a.Distance(MyPlayer.Position) < E.Range)
+										if (E.Ready && (a.Distance(args.End) <= 600f || a.Distance(sender.Position) <= 600f))
+											if (a.ChampionName != MyPlayer.ChampionName && a.Distance(MyPlayer.Position) < E.Range)
 											{
 												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
 													E.CastOnUnit(a);
 											}
-										else
+											else
 											{
 												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
 													E.CastOnUnit(a);
@@ -185,17 +185,17 @@ namespace nMorgana
 			if (Menu["combo"]["useq"].Enabled && Q.Ready)
 			{
 				var besttarget = TargetSelector.GetTarget(Q.Range);
-				
+
 				if (besttarget.IsValidTarget(Q.Range))
 				{
 					var predi = Q.GetPrediction(besttarget);
-					if(predi.HitChance >= HitChance.High)
+					if (predi.HitChance >= HitChance.High)
 					{
 						Q.Cast(besttarget);
 					}
 				}
 
-					Q.Cast(besttarget);
+				Q.Cast(besttarget);
 
 			}
 
@@ -206,7 +206,7 @@ namespace nMorgana
 
 				var besttarget = TargetSelector.GetTarget(W.Range);
 
-					if (besttarget.IsValidTarget(W.Range))
+				if (besttarget.IsValidTarget(W.Range))
 					W.Cast(besttarget);
 
 			}
@@ -215,12 +215,12 @@ namespace nMorgana
 
 		private void KS()
 		{
-			if(Menu["ks"]["ksq"].Enabled && Q.Ready && MyPlayer.Mana >= Menu["ks"]["minmana"].As<MenuSlider>().Value)
+			if (Menu["ks"]["ksq"].Enabled && Q.Ready && MyPlayer.Mana >= Menu["ks"]["minmana"].As<MenuSlider>().Value)
 			{
-				
-				foreach(Obj_AI_Hero enemy in GameObjects.EnemyHeroes)
+
+				foreach (Obj_AI_Hero enemy in GameObjects.EnemyHeroes)
 				{
-				var ksc = 	GameObjects.EnemyHeroes.FirstOrDefault(x => MyPlayer.GetSpellDamage(enemy, SpellSlot.Q) > enemy.Health + enemy.MagicalShield + 10 && enemy.IsValidTarget(Q.Range));
+					var ksc = GameObjects.EnemyHeroes.FirstOrDefault(x => MyPlayer.GetSpellDamage(enemy, SpellSlot.Q) > enemy.Health + enemy.MagicalShield + 10 && enemy.IsValidTarget(Q.Range));
 					if (ksc == null)
 					{
 						return;
@@ -232,7 +232,7 @@ namespace nMorgana
 					}
 					return;
 				}
-				
+
 			}
 			if (Menu["ks"]["ksr"].Enabled && R.Ready && MyPlayer.Mana >= Menu["ks"]["minmana"].As<MenuSlider>().Value)
 			{
@@ -251,16 +251,16 @@ namespace nMorgana
 
 		private void Render_OnPresent()
 		{
-			
-				Render.Circle(MyPlayer.Position, Q.Range, 30, Color.Purple);
-			
-				Render.Circle(MyPlayer.Position, W.Range, 30, Color.Purple);
-			
-				Render.Circle(MyPlayer.Position, R.Range, 30, Color.Red);
-			
+
+			Render.Circle(MyPlayer.Position, Q.Range, 30, Color.Purple);
+
+			Render.Circle(MyPlayer.Position, W.Range, 30, Color.Purple);
+
+			Render.Circle(MyPlayer.Position, R.Range, 30, Color.Red);
+
 		}
-		}
-		   }
+	}
+}
 
 
 
@@ -268,12 +268,12 @@ namespace nMorgana
 
 
 
-		
 
 
 
 
 
 
-	
+
+
 

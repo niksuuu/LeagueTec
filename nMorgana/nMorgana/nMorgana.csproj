@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{423C4291-9677-4CAB-9B48-FCB5C61ABA8C}</ProjectGuid>
+    <ProjectGuid>{C0227AD3-00C2-4D84-95FF-B1438C7CB04A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>nMorgana</RootNamespace>
@@ -33,15 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aimtec">
-      <HintPath>..\..\..\..\..\Downloads\Aimtec.dll</HintPath>
-    </Reference>
-    <Reference Include="Aimtec.SDK">
-      <HintPath>..\..\..\..\..\Downloads\Aimtec.SDK.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Morgana.cs" />
-	<Compile Include="SpellLibrary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
