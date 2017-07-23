@@ -1341,7 +1341,7 @@ new SpellLib
 					SpellMenuName = "Three Talon Strike",
 					Slot = SpellSlot.Q,
 					DangerLevel = 3,
-					SDataName = "XenZhaoComboTarget",
+					SDataName = "XinZhaoComboTarget",
 				});
 			CCList.Add(
 				 new SpellLib
@@ -1350,7 +1350,7 @@ new SpellLib
 					 SpellMenuName = "Audacious Charge",
 					 Slot = SpellSlot.E,
 					 DangerLevel = 4,
-					 SDataName = "XenZhaoSweep",
+					 SDataName = "XinZhaoSweep",
 				 });
 			CCList.Add(
 				  new SpellLib
@@ -1360,7 +1360,7 @@ new SpellLib
 					  Slot = SpellSlot.R,
 					  Type = Skilltype.Circle,
 					  DangerLevel = 5,
-					  SDataName = "XenZhaoParry",
+					  SDataName = "XinZhaoParry",
 				  });
 			CCList.Add(
 				new SpellLib
