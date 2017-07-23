@@ -83,7 +83,7 @@ namespace nMorgana
 					{
 						if(s.HeroName == e.ChampionName)
 						{
-							ESpells.Add(new MenuBool(s.SDataName, s.SDataName,true));
+							ESpells.Add(new MenuBool(s.SDataName, s.SpellMenuName,true));
 						}
 					}
 				}
