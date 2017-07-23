@@ -213,7 +213,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Brand",
-					SpellMenuName = "Sear",
+					SpellMenuName = "BrandQ,
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					SDataName = "BrandQ",
@@ -223,7 +223,7 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Braum",
-					SpellMenuName = "Winter's Bite",
+					SpellMenuName = "BraumQ",
 					Slot = SpellSlot.Q,
 					Type = Skilltype.Line,
 					SDataName = "BraumQ",
@@ -233,10 +233,10 @@ namespace nMorgana
 				new SpellLib
 				{
 					HeroName = "Braum",
-					SpellMenuName = "Glacial Fissure",
+					SpellMenuName = "BraumR",
 					Slot = SpellSlot.R,
 					Type = Skilltype.Line,
-					SDataName = "BraumR",
+					SDataName = "BraumRWrapper",
 					DangerLevel = 5
 				});
 			CCList.Add(
