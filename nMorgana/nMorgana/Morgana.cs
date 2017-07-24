@@ -60,10 +60,17 @@ namespace nMorgana
 			}
 			Menu.Add(ComboMenu);
 
+			var HarassMenu = new Menu("harass", "Harass");
+			{
+				HarassMenu.Add(new MenuBool("harasq","Harass Q"));
+				HarassMenu.Add(new MenuBool("harasw", "Harass W"));
+				HarassMenu.Add(new MenuSlider("harasmin", "Min Mana For Harass",250,150,(int)MyPlayer.MaxMana));
+			}
+			Menu.Add(HarassMenu);
 			var EMainMenu = new Menu("emain", "E Main Menu");
 			{
 				EMainMenu.Add(new MenuBool("usee", "Use E"));
-				EMainMenu.Add(new MenuSlider("mine", "Min Mana For E", 250, 55, (int)MyPlayer.MaxMana));
+				EMainMenu.Add(new MenuSlider("mine", "Min Mana For E", 200, 55, (int)MyPlayer.MaxMana));
 			}
 			Menu.Add(EMainMenu);
 			var EUseOn = new Menu("euseon", "E Use On");
@@ -113,6 +120,9 @@ namespace nMorgana
 
 			if (Orbwalker.Mode == OrbwalkingMode.Combo)
 				Combo();
+
+			if (Orbwalker.Mode == OrbwalkingMode.Mixed)
+				Harass();
 
 			KS();
 		}
@@ -203,15 +213,40 @@ namespace nMorgana
 
 			if (Menu["combo"]["usew"].Enabled && W.Ready)
 			{
+				foreach(var e in ObjectManager.Get<Obj_AI_Hero>().Where(e => e.IsEnemy && e.IsVisible && !e.IsDead && e.IsValid && Vector2.DistanceSquared(MyPlayer.Position.To2D(),e.ServerPosition.To2D()) < W.Range * W.Range))
+				{
+						var predic = W.GetPrediction(e);
+						if (predic.HitChance == HitChance.Immobile)
+							W.Cast(e);
+					
+				}
 
-
-				var besttarget = TargetSelector.GetTarget(W.Range);
-
-					if (besttarget.IsValidTarget(W.Range))
-					W.Cast(besttarget);
+				
+					
 
 			}
 
+		}
+		private void Harass()
+		{
+			if(Menu["harass"]["harasq"].Enabled && MyPlayer.Mana >= Menu["harass"]["harasmin"].Value && Q.Ready)
+			{
+				var besttarget = TargetSelector.GetTarget(Q.Range);
+				var predict = Q.GetPrediction(besttarget);
+				if(besttarget.IsValidTarget(Q.Range) && predict.HitChance >= HitChance.High)
+				{
+					Q.Cast(besttarget);
+				}
+			}
+			if (Menu["harass"]["harasw"].Enabled && MyPlayer.Mana >= Menu["harass"]["harasmin"].Value && W.Ready)
+			{
+				var besttarget = TargetSelector.GetTarget(W.Range);
+				var predict = W.GetPrediction(besttarget);
+				if (besttarget.IsValidTarget(W.Range) && predict.HitChance >= HitChance.High)
+				{
+					W.Cast(besttarget);
+				}
+			}
 		}
 
 		private void KS()
