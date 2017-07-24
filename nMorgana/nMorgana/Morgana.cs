@@ -214,7 +214,7 @@ namespace nMorgana
 			{
 				        var target = TargetSelector.GetTarget(W.Range);
 						var predic = W.GetPrediction(target);
-						if (predic.HitChance == HitChance.Immobile)
+						if (predic.HitChance == HitChance.VeryHigh)
 							W.Cast(target);
 					
 				
