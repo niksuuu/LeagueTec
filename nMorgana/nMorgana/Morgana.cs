@@ -1,4 +1,4 @@
-﻿using System;
+﻿progusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
@@ -109,7 +109,6 @@ namespace nMorgana
 			Menu.Attach();
 
 			Game.OnUpdate += Game_OnUpdate;
-			
 			Render.OnPresent += Render_OnPresent;
 			
 		}
@@ -213,13 +212,12 @@ namespace nMorgana
 
 			if (Menu["combo"]["usew"].Enabled && W.Ready)
 			{
-				foreach(var e in ObjectManager.Get<Obj_AI_Hero>().Where(e => e.IsEnemy && e.IsVisible && !e.IsDead && e.IsValid && Vector2.DistanceSquared(MyPlayer.Position.To2D(),e.ServerPosition.To2D()) < W.Range * W.Range))
-				{
+				        var target = target.GetTarget(W.Range);
 						var predic = W.GetPrediction(e);
 						if (predic.HitChance == HitChance.Immobile)
 							W.Cast(e);
 					
-				}
+				
 
 				
 					
