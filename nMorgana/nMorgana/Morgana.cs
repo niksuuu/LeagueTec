@@ -1,4 +1,4 @@
-﻿progusing System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
@@ -212,10 +212,10 @@ namespace nMorgana
 
 			if (Menu["combo"]["usew"].Enabled && W.Ready)
 			{
-				        var target = target.GetTarget(W.Range);
-						var predic = W.GetPrediction(e);
+				        var target = TargetSelector.GetTarget(W.Range);
+						var predic = W.GetPrediction(target);
 						if (predic.HitChance == HitChance.Immobile)
-							W.Cast(e);
+							W.Cast(target);
 					
 				
 
