@@ -110,10 +110,65 @@ namespace nMorgana
 
 			Game.OnUpdate += Game_OnUpdate;
 			Render.OnPresent += Render_OnPresent;
-			
+			Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
 		}
+
+		private void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, Obj_AI_BaseMissileClientDataEventArgs args)
+		{
+			if (Menu["emenu"]["usee"].Enabled && MyPlayer.Mana >= Menu["emain"]["mine"].Value)
+			{
+				if (sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
+				{
+
+					var target = ObjectManager.Get<Obj_AI_Hero>().Where(her => her.IsAlly).OrderBy(h => h.Distance(args.End));
+					foreach (var a in target)
+					{
+						foreach (var spell in SpellLib.CCList)
+						{
+							if (spell.SDataName == sender.SpellBook.GetSpell(args.SpellSlot).SpellData.Name)
+							{
+								switch (spell.Type)
+								{
+									case Skilltype.Circle:
+										if (a.Distance(args.End) <= 250f && E.Ready)
+										{
+											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+												E.CastOnUnit(a);
+
+										}
+										break;
+
+									case Skilltype.Line:
+										if (a.Distance(args.End) <= 100f && E.Ready)
+										{
+											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+												E.CastOnUnit(a);
+										}
+										break;
+									case Skilltype.Unknown:
+										if (E.Ready && (a.Distance(args.End) <= 600f || a.Distance(sender.Position) <= 600f))
+											if (a.ChampionName != MyPlayer.ChampionName && a.Distance(MyPlayer.Position) < E.Range)
+											{
+												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+													E.CastOnUnit(a);
+											}
+											else
+											{
+												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
+													E.CastOnUnit(a);
+											}
+										break;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
 		private void Game_OnUpdate()
-		{	
+		{
+			;
 			if (MyPlayer.IsDead)
 				return;
 
@@ -128,55 +183,7 @@ namespace nMorgana
 
 		private void OnProcessSpellCast(Obj_AI_Base sender, SpellBookCastSpellEventArgs args)
 		{
-			if (Menu["emenu"]["usee"].Enabled && MyPlayer.Mana >= Menu["emain"]["mine"].Value)
-			{
-				if(sender.Type == GameObjectType.obj_AI_Hero && sender.IsEnemy)
-				{
-					
-					var target = ObjectManager.Get<Obj_AI_Hero>().Where(her => her.IsAlly).OrderBy(h => h.Distance(args.End));
-					foreach(var a in target)
-					{
-						foreach (var spell in SpellLib.CCList)
-						{
-							if(spell.SDataName == sender.SpellBook.GetSpell(args.Slot).SpellData.Name)
-							{
-								switch(spell.Type)
-								{
-									case Skilltype.Circle:
-										if(a.Distance(args.End) <= 250f && E.Ready)
-										{
-											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)					
-												E.CastOnUnit(a);
-											
-										}
-										break;
-
-									case Skilltype.Line:
-										if(a.Distance(args.End) <= 100f && E.Ready)
-										{
-											if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
-												E.CastOnUnit(a);
-										}
-										break;
-									case Skilltype.Unknown:
-										if(E.Ready && (a.Distance(args.End) <= 600f || a.Distance(sender.Position) <= 600f))
-											if(a.ChampionName != MyPlayer.ChampionName && a.Distance(MyPlayer.Position) < E.Range)
-											{
-												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
-													E.CastOnUnit(a);
-											}
-										else
-											{
-												if (Menu["espells"][spell.SDataName].Enabled && Menu["euseon"]["shield" + a.ChampionName].Enabled)
-													E.CastOnUnit(a);
-											}
-										break;
-								}
-							}
-						}
-					}
-				}
-			}
+			
 		}
 
 		private void Combo()
